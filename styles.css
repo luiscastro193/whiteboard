@@ -1,14 +1,12 @@
-:root {
-	--padding: 1rem;
-	--max-font-size: calc((100dvh - 2 * var(--padding)) / 1.22);
-	--factor: 1;
-}
-
 * {
 	font-family: InterVariable, sans-serif;
 }
 
 main {
+	--padding: 1rem;
+	--height: 100dvh;
+	--factor: 1;
+	--max-font-size: calc((var(--height) - 2 * var(--padding)) / 1.22);
 	position: fixed;
 	inset: var(--padding);
 	font-size: calc(var(--max-font-size) * var(--factor));
@@ -19,4 +17,15 @@ main {
 	text-wrap: balance;
 	white-space: pre-line;
 	outline: none;
+}
+
+.print {
+	--height: 297mm;
+	width: calc(210mm - 2 * var(--padding));
+	height: calc(var(--height) - 2 * var(--padding));
+}
+
+@page {
+	size: A4;
+	margin: 0;
 }
