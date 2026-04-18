@@ -2,6 +2,7 @@
 const main = document.querySelector('main');
 const root = document.querySelector(':root');
 const text = document.createRange();
+let startY;
 
 function fits(mainRect) {
 	const textRect = text.getBoundingClientRect();
@@ -27,13 +28,18 @@ function setFactor() {
 	root.style.setProperty('--factor', low);
 }
 
-main.onfocus = () => {
-	if (!history.state?.focused)
-		history.pushState({focused: true}, '');
-};
+document.addEventListener('touchstart', event => {
+	startY = event.changedTouches[0].pageY;
+});
 
-window.onpopstate = () => main.blur();
-main.blur();
+document.addEventListener('touchend', event => {
+	if (startY - event.changedTouches[0].pageY > 50) main.blur();
+});
+
+document.addEventListener('keydown', event => {
+	if (event.key == 'Escape') main.blur();
+});
+
 if (!main.textContent) main.textContent = localStorage.getItem("whiteboard");
 
 await document.fonts.ready;
