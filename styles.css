@@ -1,0 +1,22 @@
+:root {
+	--padding: 1rem;
+	--max-font-size: calc((100dvh - 2 * var(--padding)) / 1.22);
+	--factor: 1;
+}
+
+* {
+	font-family: InterVariable, sans-serif;
+}
+
+main {
+	position: fixed;
+	inset: var(--padding);
+	font-size: calc(var(--max-font-size) * var(--factor));
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	text-wrap: balance;
+	white-space: pre-line;
+	outline: none;
+}
