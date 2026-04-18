@@ -27,7 +27,15 @@ function setFactor() {
 	root.style.setProperty('--factor', low);
 }
 
+main.onfocus = () => {
+	if (!history.state?.focused)
+		history.pushState({focused: true}, '');
+};
+
+window.onpopstate = () => main.blur();
+main.blur();
 if (!main.textContent) main.textContent = localStorage.getItem("whiteboard");
+
 await document.fonts.ready;
 main.oninput = setFactor;
 new ResizeObserver(setFactor).observe(main);
