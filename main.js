@@ -11,11 +11,17 @@ function fits(mainRect) {
 
 function setFactor() {
 	localStorage.setItem("whiteboard", main.textContent);
-	const mainRect = main.getBoundingClientRect();
-	text.selectNodeContents(main);
 	let factor = 1;
 	root.style.setProperty('--factor', factor);
-	if (!main.textContent || fits(mainRect)) return;
+	
+	if (!main.textContent) {
+		main.innerHTML = '';
+		return;
+	}
+	
+	const mainRect = main.getBoundingClientRect();
+	text.selectNodeContents(main);
+	if (fits(mainRect)) return;
 	let low = 0, high = 1;
 	
 	while (high - low > 1e-4) {
