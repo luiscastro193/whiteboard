@@ -10,6 +10,7 @@ main {
 	position: fixed;
 	inset: var(--padding);
 	font-size: calc(var(--max-font-size) * var(--factor));
+	overflow-wrap: normal;
 	align-content: center;
 	text-align: center;
 	text-wrap: balance;
