@@ -10,12 +10,9 @@ main {
 	position: fixed;
 	inset: var(--padding);
 	font-size: calc(var(--max-font-size) * var(--factor));
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	align-content: center;
 	text-align: center;
 	text-wrap: balance;
-	white-space: pre-line;
 	outline: none;
 }
 
